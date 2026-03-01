@@ -1,0 +1,2 @@
+"""Morse training package."""
+

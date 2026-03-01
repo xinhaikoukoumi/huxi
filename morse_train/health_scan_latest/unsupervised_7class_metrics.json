@@ -1,0 +1,528 @@
+{
+  "status": "ok",
+  "label_col": "label",
+  "n_samples": 7,
+  "n_labels": 7,
+  "labels": [
+    "咳嗽",
+    "小跑",
+    "跑步",
+    "右鼻塞",
+    "左鼻塞",
+    "口呼吸",
+    "鼻子呼吸"
+  ],
+  "zip_files": [
+    "AB，咳嗽，5次-0205184642.zip",
+    "AB，小跑，1分钟-0205184334.zip",
+    "AB，跑步，1分钟-0205184554.zip",
+    "AB，右鼻塞，1分钟-0205184146.zip",
+    "AB，左鼻塞，1分钟-0205183951.zip",
+    "AB，口呼吸，一分钟-0205183748.zip",
+    "AB，鼻子呼吸，两分钟-0205183559.zip"
+  ],
+  "feature_cols": [
+    "num_rows",
+    "duration_s",
+    "fs_hz",
+    "ch1_dominant_freq",
+    "ch1_spectral_entropy",
+    "ch1_hf_ratio",
+    "ch1_bandpower_ratio",
+    "ch1_centroid",
+    "ch1_mean",
+    "ch1_std",
+    "ch1_iqr",
+    "ch1_rms",
+    "ch1_skew",
+    "ch1_kurtosis",
+    "ch1_zero_crossing_rate",
+    "ch1_peak_interval_mean_s",
+    "ch1_peak_interval_std_s",
+    "ch1_peak_interval_cv",
+    "ch1_breaths_per_min",
+    "ch2_dominant_freq",
+    "ch2_spectral_entropy",
+    "ch2_hf_ratio",
+    "ch2_bandpower_ratio",
+    "ch2_centroid",
+    "ch2_mean",
+    "ch2_std",
+    "ch2_iqr",
+    "ch2_rms",
+    "ch2_skew",
+    "ch2_kurtosis",
+    "ch2_zero_crossing_rate",
+    "ch2_peak_interval_mean_s",
+    "ch2_peak_interval_std_s",
+    "ch2_peak_interval_cv",
+    "ch2_breaths_per_min",
+    "corr_ch1_ch2",
+    "energy_ratio_ch1_ch2",
+    "xcorr_peak_ch1_ch2",
+    "xcorr_lag_s_ch1_ch2",
+    "window_count",
+    "w10s_ch1_dominant_freq_mean",
+    "w10s_ch1_dominant_freq_p25",
+    "w10s_ch1_dominant_freq_p75",
+    "w10s_ch1_spectral_entropy_mean",
+    "w10s_ch1_spectral_entropy_p25",
+    "w10s_ch1_spectral_entropy_p75",
+    "w10s_ch1_hf_ratio_mean",
+    "w10s_ch1_hf_ratio_p25",
+    "w10s_ch1_hf_ratio_p75",
+    "w10s_ch1_bandpower_ratio_mean",
+    "w10s_ch1_bandpower_ratio_p25",
+    "w10s_ch1_bandpower_ratio_p75",
+    "w10s_ch1_centroid_mean",
+    "w10s_ch1_centroid_p25",
+    "w10s_ch1_centroid_p75",
+    "w10s_ch1_mean_mean",
+    "w10s_ch1_mean_p25",
+    "w10s_ch1_mean_p75",
+    "w10s_ch1_std_mean",
+    "w10s_ch1_std_p25",
+    "w10s_ch1_std_p75",
+    "w10s_ch1_iqr_mean",
+    "w10s_ch1_iqr_p25",
+    "w10s_ch1_iqr_p75",
+    "w10s_ch1_rms_mean",
+    "w10s_ch1_rms_p25",
+    "w10s_ch1_rms_p75",
+    "w10s_ch1_skew_mean",
+    "w10s_ch1_skew_p25",
+    "w10s_ch1_skew_p75",
+    "w10s_ch1_kurtosis_mean",
+    "w10s_ch1_kurtosis_p25",
+    "w10s_ch1_kurtosis_p75",
+    "w10s_ch1_zero_crossing_rate_mean",
+    "w10s_ch1_zero_crossing_rate_p25",
+    "w10s_ch1_zero_crossing_rate_p75",
+    "w10s_ch1_peak_interval_mean_s_mean",
+    "w10s_ch1_peak_interval_mean_s_p25",
+    "w10s_ch1_peak_interval_mean_s_p75",
+    "w10s_ch1_peak_interval_std_s_mean",
+    "w10s_ch1_peak_interval_std_s_p25",
+    "w10s_ch1_peak_interval_std_s_p75",
+    "w10s_ch1_peak_interval_cv_mean",
+    "w10s_ch1_peak_interval_cv_p25",
+    "w10s_ch1_peak_interval_cv_p75",
+    "w10s_ch1_breaths_per_min_mean",
+    "w10s_ch1_breaths_per_min_p25",
+    "w10s_ch1_breaths_per_min_p75",
+    "w10s_ch2_dominant_freq_mean",
+    "w10s_ch2_dominant_freq_p25",
+    "w10s_ch2_dominant_freq_p75",
+    "w10s_ch2_spectral_entropy_mean",
+    "w10s_ch2_spectral_entropy_p25",
+    "w10s_ch2_spectral_entropy_p75",
+    "w10s_ch2_hf_ratio_mean",
+    "w10s_ch2_hf_ratio_p25",
+    "w10s_ch2_hf_ratio_p75",
+    "w10s_ch2_bandpower_ratio_mean",
+    "w10s_ch2_bandpower_ratio_p25",
+    "w10s_ch2_bandpower_ratio_p75",
+    "w10s_ch2_centroid_mean",
+    "w10s_ch2_centroid_p25",
+    "w10s_ch2_centroid_p75",
+    "w10s_ch2_mean_mean",
+    "w10s_ch2_mean_p25",
+    "w10s_ch2_mean_p75",
+    "w10s_ch2_std_mean",
+    "w10s_ch2_std_p25",
+    "w10s_ch2_std_p75",
+    "w10s_ch2_iqr_mean",
+    "w10s_ch2_iqr_p25",
+    "w10s_ch2_iqr_p75",
+    "w10s_ch2_rms_mean",
+    "w10s_ch2_rms_p25",
+    "w10s_ch2_rms_p75",
+    "w10s_ch2_skew_mean",
+    "w10s_ch2_skew_p25",
+    "w10s_ch2_skew_p75",
+    "w10s_ch2_kurtosis_mean",
+    "w10s_ch2_kurtosis_p25",
+    "w10s_ch2_kurtosis_p75",
+    "w10s_ch2_zero_crossing_rate_mean",
+    "w10s_ch2_zero_crossing_rate_p25",
+    "w10s_ch2_zero_crossing_rate_p75",
+    "w10s_ch2_peak_interval_mean_s_mean",
+    "w10s_ch2_peak_interval_mean_s_p25",
+    "w10s_ch2_peak_interval_mean_s_p75",
+    "w10s_ch2_peak_interval_std_s_mean",
+    "w10s_ch2_peak_interval_std_s_p25",
+    "w10s_ch2_peak_interval_std_s_p75",
+    "w10s_ch2_peak_interval_cv_mean",
+    "w10s_ch2_peak_interval_cv_p25",
+    "w10s_ch2_peak_interval_cv_p75",
+    "w10s_ch2_breaths_per_min_mean",
+    "w10s_ch2_breaths_per_min_p25",
+    "w10s_ch2_breaths_per_min_p75",
+    "w10s_corr_ch1_ch2_mean",
+    "w10s_corr_ch1_ch2_p25",
+    "w10s_corr_ch1_ch2_p75",
+    "w10s_energy_ratio_ch1_ch2_mean",
+    "w10s_energy_ratio_ch1_ch2_p25",
+    "w10s_energy_ratio_ch1_ch2_p75",
+    "w10s_xcorr_peak_ch1_ch2_mean",
+    "w10s_xcorr_peak_ch1_ch2_p25",
+    "w10s_xcorr_peak_ch1_ch2_p75",
+    "w10s_xcorr_lag_s_ch1_ch2_mean",
+    "w10s_xcorr_lag_s_ch1_ch2_p25",
+    "w10s_xcorr_lag_s_ch1_ch2_p75",
+    "segment_count"
+  ],
+  "k_values": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "kmeans": [
+    {
+      "k": 2,
+      "n_clusters_found": 2,
+      "silhouette": 0.12915493273085624,
+      "davies_bouldin": 1.5365046482962377,
+      "ari": 0.0,
+      "nmi": 0.5195552060130464
+    },
+    {
+      "k": 3,
+      "n_clusters_found": 3,
+      "silhouette": 0.1093384450724513,
+      "davies_bouldin": 1.0451792236734134,
+      "ari": 0.0,
+      "nmi": 0.6587376510850855
+    },
+    {
+      "k": 4,
+      "n_clusters_found": 4,
+      "silhouette": 0.11723904443929753,
+      "davies_bouldin": 0.7881869085192414,
+      "ari": 0.0,
+      "nmi": 0.7924643416682371
+    },
+    {
+      "k": 5,
+      "n_clusters_found": 5,
+      "silhouette": 0.11509128229794621,
+      "davies_bouldin": 0.6480815177106413,
+      "ari": 0.0,
+      "nmi": 0.8866950819254699
+    },
+    {
+      "k": 6,
+      "n_clusters_found": 6,
+      "silhouette": 0.11641189289193352,
+      "davies_bouldin": 0.28549048539072247,
+      "ari": 0.0,
+      "nmi": 0.9463849645616855
+    }
+  ],
+  "agglomerative": [
+    {
+      "k": 2,
+      "n_clusters_found": 2,
+      "silhouette": 0.12915493273085624,
+      "davies_bouldin": 1.5365046482962377,
+      "ari": 0.0,
+      "nmi": 0.5195552060130464
+    },
+    {
+      "k": 3,
+      "n_clusters_found": 3,
+      "silhouette": 0.1093384450724513,
+      "davies_bouldin": 1.0451792236734134,
+      "ari": 0.0,
+      "nmi": 0.6587376510850856
+    },
+    {
+      "k": 4,
+      "n_clusters_found": 4,
+      "silhouette": 0.11723904443929753,
+      "davies_bouldin": 0.7881869085192414,
+      "ari": 0.0,
+      "nmi": 0.792464341668237
+    },
+    {
+      "k": 5,
+      "n_clusters_found": 5,
+      "silhouette": 0.11509128229794621,
+      "davies_bouldin": 0.6480815177106413,
+      "ari": 0.0,
+      "nmi": 0.8866950819254699
+    },
+    {
+      "k": 6,
+      "n_clusters_found": 6,
+      "silhouette": 0.11641189289193352,
+      "davies_bouldin": 0.2854904853907225,
+      "ari": 0.0,
+      "nmi": 0.9463849645616855
+    }
+  ],
+  "pca_explained_variance_ratio": [
+    0.32236663013230654,
+    0.25284807796611436
+  ],
+  "pca_points": [
+    {
+      "zip_file": "AB，咳嗽，5次-0205184642.zip",
+      "label": "咳嗽",
+      "pc1": -5.215071777993576,
+      "pc2": -4.230784292317395
+    },
+    {
+      "zip_file": "AB，小跑，1分钟-0205184334.zip",
+      "label": "小跑",
+      "pc1": 12.173891533518,
+      "pc2": 8.862088032952538
+    },
+    {
+      "zip_file": "AB，跑步，1分钟-0205184554.zip",
+      "label": "跑步",
+      "pc1": -5.332121869274834,
+      "pc2": -1.2296755521725917
+    },
+    {
+      "zip_file": "AB，右鼻塞，1分钟-0205184146.zip",
+      "label": "右鼻塞",
+      "pc1": 4.018686852158109,
+      "pc2": -6.840228238488534
+    },
+    {
+      "zip_file": "AB，左鼻塞，1分钟-0205183951.zip",
+      "label": "左鼻塞",
+      "pc1": 5.790279041932327,
+      "pc2": -5.4059232701777535
+    },
+    {
+      "zip_file": "AB，口呼吸，一分钟-0205183748.zip",
+      "label": "口呼吸",
+      "pc1": -8.463311631594502,
+      "pc2": 9.365784778227454
+    },
+    {
+      "zip_file": "AB，鼻子呼吸，两分钟-0205183559.zip",
+      "label": "鼻子呼吸",
+      "pc1": -2.9723521487455176,
+      "pc2": -0.521261458023716
+    }
+  ],
+  "pairwise_distance": [
+    [
+      0.0,
+      23.537401693261504,
+      16.256150924187654,
+      20.476563415450734,
+      17.538614725165083,
+      19.544183818636593,
+      18.197950867865437
+    ],
+    [
+      23.537401693261504,
+      0.0,
+      21.628657281484493,
+      21.165469122860433,
+      18.28816645660084,
+      22.17425435029396,
+      20.279659503278577
+    ],
+    [
+      16.256150924187654,
+      21.628657281484493,
+      0.0,
+      17.093939666349062,
+      16.18389479924969,
+      15.730049989462852,
+      9.18908424037664
+    ],
+    [
+      20.476563415450734,
+      21.165469122860433,
+      17.093939666349062,
+      0.0,
+      16.120706318243837,
+      21.965873120428046,
+      15.492643364422836
+    ],
+    [
+      17.538614725165083,
+      18.28816645660084,
+      16.18389479924969,
+      16.120706318243837,
+      0.0,
+      22.242023683136015,
+      15.291111037189651
+    ],
+    [
+      19.544183818636593,
+      22.17425435029396,
+      15.730049989462852,
+      21.965873120428046,
+      22.242023683136015,
+      0.0,
+      15.607068788994889
+    ],
+    [
+      18.197950867865437,
+      20.279659503278577,
+      9.18908424037664,
+      15.492643364422836,
+      15.291111037189651,
+      15.607068788994889,
+      0.0
+    ]
+  ],
+  "nearest_pairs": [
+    {
+      "i": 2,
+      "j": 6,
+      "zip_i": "AB，跑步，1分钟-0205184554.zip",
+      "zip_j": "AB，鼻子呼吸，两分钟-0205183559.zip",
+      "distance": 9.18908424037664
+    },
+    {
+      "i": 4,
+      "j": 6,
+      "zip_i": "AB，左鼻塞，1分钟-0205183951.zip",
+      "zip_j": "AB，鼻子呼吸，两分钟-0205183559.zip",
+      "distance": 15.291111037189651
+    },
+    {
+      "i": 3,
+      "j": 6,
+      "zip_i": "AB，右鼻塞，1分钟-0205184146.zip",
+      "zip_j": "AB，鼻子呼吸，两分钟-0205183559.zip",
+      "distance": 15.492643364422836
+    },
+    {
+      "i": 5,
+      "j": 6,
+      "zip_i": "AB，口呼吸，一分钟-0205183748.zip",
+      "zip_j": "AB，鼻子呼吸，两分钟-0205183559.zip",
+      "distance": 15.607068788994889
+    },
+    {
+      "i": 2,
+      "j": 5,
+      "zip_i": "AB，跑步，1分钟-0205184554.zip",
+      "zip_j": "AB，口呼吸，一分钟-0205183748.zip",
+      "distance": 15.730049989462852
+    },
+    {
+      "i": 3,
+      "j": 4,
+      "zip_i": "AB，右鼻塞，1分钟-0205184146.zip",
+      "zip_j": "AB，左鼻塞，1分钟-0205183951.zip",
+      "distance": 16.120706318243837
+    },
+    {
+      "i": 2,
+      "j": 4,
+      "zip_i": "AB，跑步，1分钟-0205184554.zip",
+      "zip_j": "AB，左鼻塞，1分钟-0205183951.zip",
+      "distance": 16.18389479924969
+    },
+    {
+      "i": 0,
+      "j": 2,
+      "zip_i": "AB，咳嗽，5次-0205184642.zip",
+      "zip_j": "AB，跑步，1分钟-0205184554.zip",
+      "distance": 16.256150924187654
+    },
+    {
+      "i": 2,
+      "j": 3,
+      "zip_i": "AB，跑步，1分钟-0205184554.zip",
+      "zip_j": "AB，右鼻塞，1分钟-0205184146.zip",
+      "distance": 17.093939666349062
+    },
+    {
+      "i": 0,
+      "j": 4,
+      "zip_i": "AB，咳嗽，5次-0205184642.zip",
+      "zip_j": "AB，左鼻塞，1分钟-0205183951.zip",
+      "distance": 17.538614725165083
+    },
+    {
+      "i": 0,
+      "j": 6,
+      "zip_i": "AB，咳嗽，5次-0205184642.zip",
+      "zip_j": "AB，鼻子呼吸，两分钟-0205183559.zip",
+      "distance": 18.197950867865437
+    },
+    {
+      "i": 1,
+      "j": 4,
+      "zip_i": "AB，小跑，1分钟-0205184334.zip",
+      "zip_j": "AB，左鼻塞，1分钟-0205183951.zip",
+      "distance": 18.28816645660084
+    },
+    {
+      "i": 0,
+      "j": 5,
+      "zip_i": "AB，咳嗽，5次-0205184642.zip",
+      "zip_j": "AB，口呼吸，一分钟-0205183748.zip",
+      "distance": 19.544183818636593
+    },
+    {
+      "i": 1,
+      "j": 6,
+      "zip_i": "AB，小跑，1分钟-0205184334.zip",
+      "zip_j": "AB，鼻子呼吸，两分钟-0205183559.zip",
+      "distance": 20.279659503278577
+    },
+    {
+      "i": 0,
+      "j": 3,
+      "zip_i": "AB，咳嗽，5次-0205184642.zip",
+      "zip_j": "AB，右鼻塞，1分钟-0205184146.zip",
+      "distance": 20.476563415450734
+    },
+    {
+      "i": 1,
+      "j": 3,
+      "zip_i": "AB，小跑，1分钟-0205184334.zip",
+      "zip_j": "AB，右鼻塞，1分钟-0205184146.zip",
+      "distance": 21.165469122860433
+    },
+    {
+      "i": 1,
+      "j": 2,
+      "zip_i": "AB，小跑，1分钟-0205184334.zip",
+      "zip_j": "AB，跑步，1分钟-0205184554.zip",
+      "distance": 21.628657281484493
+    },
+    {
+      "i": 3,
+      "j": 5,
+      "zip_i": "AB，右鼻塞，1分钟-0205184146.zip",
+      "zip_j": "AB，口呼吸，一分钟-0205183748.zip",
+      "distance": 21.965873120428046
+    },
+    {
+      "i": 1,
+      "j": 5,
+      "zip_i": "AB，小跑，1分钟-0205184334.zip",
+      "zip_j": "AB，口呼吸，一分钟-0205183748.zip",
+      "distance": 22.17425435029396
+    },
+    {
+      "i": 4,
+      "j": 5,
+      "zip_i": "AB，左鼻塞，1分钟-0205183951.zip",
+      "zip_j": "AB，口呼吸，一分钟-0205183748.zip",
+      "distance": 22.242023683136015
+    },
+    {
+      "i": 0,
+      "j": 1,
+      "zip_i": "AB，咳嗽，5次-0205184642.zip",
+      "zip_j": "AB，小跑，1分钟-0205184334.zip",
+      "distance": 23.537401693261504
+    }
+  ]
+}

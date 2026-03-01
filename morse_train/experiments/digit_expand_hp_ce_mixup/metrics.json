@@ -1,0 +1,35 @@
+{
+  "best_epoch": 56,
+  "best_val_macro_f1": 0.704494392054846,
+  "test_loss": 0.9037429727536477,
+  "test_accuracy": 0.7671517671517671,
+  "test_macro_f1": 0.756356967068038,
+  "per_class_recall": {
+    "0": 0.41379310344827586,
+    "1": 0.8979591836734694,
+    "2": 0.7209302325581395,
+    "3": 0.9482758620689655,
+    "4": 0.7413793103448276,
+    "5": 0.6428571428571429,
+    "6": 0.6511627906976745,
+    "7": 0.8604651162790697,
+    "8": 0.9310344827586207,
+    "9": 0.813953488372093
+  },
+  "splits": {
+    "train": 1107,
+    "val": 441,
+    "test": 481
+  },
+  "split_mode": "group_by_file_stratified",
+  "artifacts": {
+    "model_path": "d:\\huxi\\morse_train\\experiments\\digit_expand_hp_ce_mixup\\morse_char_model.pt",
+    "cache_path": "d:\\huxi\\morse_train\\experiments\\digit_expand_hp_ce_mixup\\segments_cache.npz",
+    "meta_path": "d:\\huxi\\morse_train\\experiments\\digit_expand_hp_ce_mixup\\meta.csv",
+    "label_map_path": "d:\\huxi\\morse_train\\experiments\\digit_expand_hp_ce_mixup\\label_map.json",
+    "history_path": "d:\\huxi\\morse_train\\experiments\\digit_expand_hp_ce_mixup\\train_history.csv",
+    "metrics_path": "d:\\huxi\\morse_train\\experiments\\digit_expand_hp_ce_mixup\\metrics.json",
+    "cm_path": "d:\\huxi\\morse_train\\experiments\\digit_expand_hp_ce_mixup\\confusion_matrix.csv",
+    "config_path": "d:\\huxi\\morse_train\\experiments\\digit_expand_hp_ce_mixup\\train_config.json"
+  }
+}

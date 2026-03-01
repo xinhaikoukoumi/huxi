@@ -1,0 +1,35 @@
+{
+  "best_epoch": 38,
+  "best_val_macro_f1": 0.7486313191338423,
+  "test_loss": 0.9185214275899141,
+  "test_accuracy": 0.7204968944099379,
+  "test_macro_f1": 0.6990799060372709,
+  "per_class_recall": {
+    "0": 0.85,
+    "1": 0.4,
+    "2": 0.7333333333333333,
+    "3": 0.85,
+    "4": 0.9,
+    "5": 0.7,
+    "6": 0.9230769230769231,
+    "7": 0.375,
+    "8": 0.8,
+    "9": 0.6
+  },
+  "splits": {
+    "train": 400,
+    "val": 143,
+    "test": 161
+  },
+  "split_mode": "group_by_file_stratified",
+  "artifacts": {
+    "model_path": "d:\\huxi\\morse_train\\experiments\\digit_baseline_off0_s7\\morse_char_model.pt",
+    "cache_path": "d:\\huxi\\morse_train\\experiments\\digit_baseline_off0_s7\\segments_cache.npz",
+    "meta_path": "d:\\huxi\\morse_train\\experiments\\digit_baseline_off0_s7\\meta.csv",
+    "label_map_path": "d:\\huxi\\morse_train\\experiments\\digit_baseline_off0_s7\\label_map.json",
+    "history_path": "d:\\huxi\\morse_train\\experiments\\digit_baseline_off0_s7\\train_history.csv",
+    "metrics_path": "d:\\huxi\\morse_train\\experiments\\digit_baseline_off0_s7\\metrics.json",
+    "cm_path": "d:\\huxi\\morse_train\\experiments\\digit_baseline_off0_s7\\confusion_matrix.csv",
+    "config_path": "d:\\huxi\\morse_train\\experiments\\digit_baseline_off0_s7\\train_config.json"
+  }
+}

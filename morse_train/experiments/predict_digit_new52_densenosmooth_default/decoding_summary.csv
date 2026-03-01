@@ -1,0 +1,2 @@
+zip_file,segments,offset_sec,raw_sequence,final_sequence,decoded_phrase,decode_score,mean_confidence,output_csv
+AB，0-9，一整组-0206135836(2).zip,10,2.0,0113456649,0113456649,,-0.05658979225261621,0.9449816286563874,d:\huxi\morse_train\experiments\predict_digit_new52_densenosmooth_default\AB，0-9，一整组-0206135836(2)_segments.csv

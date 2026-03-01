@@ -1,0 +1,2 @@
+zip_file,segments,offset_sec,raw_sequence,final_sequence,decoded_phrase,decode_score,mean_confidence,output_csv
+AB，0-9，一整组-0206135836(2).zip,10,0.0,0226456949,0226456949,,-0.3213690416560802,0.7251555889844894,d:\huxi\morse_train\experiments\predict_digit_expand6_no_adapt\AB，0-9，一整组-0206135836(2)_segments.csv

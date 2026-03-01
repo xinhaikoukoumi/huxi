@@ -1,0 +1,24 @@
+﻿# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Pytest/cache
+.pytest_cache/
+
+# OS temp
+.DS_Store
+Thumbs.db
+
+# Freeze trash
+_freeze_trash_*/
+
+# Future experiment outputs (keep final delivery outputs)
+morse_train/artifacts*/
+!morse_train/artifacts_delivery_final/
+!morse_train/artifacts_delivery_final/**
+
+morse_train/predictions*/
+!morse_train/predictions_delivery_final_lex/
+!morse_train/predictions_delivery_final_lex/**
