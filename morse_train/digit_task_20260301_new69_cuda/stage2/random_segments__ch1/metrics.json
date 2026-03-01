@@ -1,0 +1,35 @@
+{
+  "best_epoch": 97,
+  "best_val_macro_f1": 0.9479669805374475,
+  "test_loss": 0.034092615341900716,
+  "test_accuracy": 0.9897959183673469,
+  "test_macro_f1": 0.9885714285714287,
+  "per_class_recall": {
+    "0": 1.0,
+    "1": 1.0,
+    "2": 1.0,
+    "3": 1.0,
+    "4": 1.0,
+    "5": 0.875,
+    "6": 1.0,
+    "7": 1.0,
+    "8": 1.0,
+    "9": 1.0
+  },
+  "splits": {
+    "train": 782,
+    "val": 98,
+    "test": 98
+  },
+  "split_mode": "random_segments",
+  "artifacts": {
+    "model_path": "d:\\huxi\\morse_train\\digit_task_20260301_new69_cuda\\stage2\\random_segments__ch1\\morse_char_model.pt",
+    "cache_path": "d:\\huxi\\morse_train\\digit_task_20260301_new69_cuda\\stage2\\random_segments__ch1\\segments_cache.npz",
+    "meta_path": "d:\\huxi\\morse_train\\digit_task_20260301_new69_cuda\\stage2\\random_segments__ch1\\meta.csv",
+    "label_map_path": "d:\\huxi\\morse_train\\digit_task_20260301_new69_cuda\\stage2\\random_segments__ch1\\label_map.json",
+    "history_path": "d:\\huxi\\morse_train\\digit_task_20260301_new69_cuda\\stage2\\random_segments__ch1\\train_history.csv",
+    "metrics_path": "d:\\huxi\\morse_train\\digit_task_20260301_new69_cuda\\stage2\\random_segments__ch1\\metrics.json",
+    "cm_path": "d:\\huxi\\morse_train\\digit_task_20260301_new69_cuda\\stage2\\random_segments__ch1\\confusion_matrix.csv",
+    "config_path": "d:\\huxi\\morse_train\\digit_task_20260301_new69_cuda\\stage2\\random_segments__ch1\\train_config.json"
+  }
+}

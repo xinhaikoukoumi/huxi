@@ -203,20 +203,17 @@ def plot_prediction_signal(zip_path, segments_csv, out_png, title: str = "") -> 
     ch1 = frame["ch1"].to_numpy(dtype=np.float64)
     ch2 = frame["ch2"].to_numpy(dtype=np.float64)
 
-    fig, axes = plt.subplots(2, 1, figsize=(16.0, 7.2), sharex=True)
-    ax1, ax2 = axes
-    ax1.plot(t, ch1, color="#2b6cb0", linewidth=1.2, label="Ch1 DeltaR/R0 (%)")
-    ax2.plot(t, ch2, color="#2f855a", linewidth=1.2, label="Ch2 DeltaR/R0 (%)")
-    ax1.legend(loc="upper right")
-    ax2.legend(loc="upper right")
-    ax1.grid(alpha=0.25)
-    ax2.grid(alpha=0.25)
-    ax1.set_ylabel("Ch1")
-    ax2.set_ylabel("Ch2")
-    ax2.set_xlabel("Time (s)")
+    fig, ax = plt.subplots(1, 1, figsize=(16.0, 5.8))
+    ax.plot(t, ch1, color="#2b6cb0", linewidth=1.2, label="Ch1 DeltaR/R0 (%)", alpha=0.95)
+    ax.plot(t, ch2, color="#2f855a", linewidth=1.2, label="Ch2 DeltaR/R0 (%)", alpha=0.90)
+    ax.legend(loc="upper right")
+    ax.grid(alpha=0.25)
+    ax.set_ylabel("DeltaR/R0 (%)")
+    ax.set_xlabel("Time (s)")
 
     colors = ["#fed7aa", "#fde68a", "#bbf7d0", "#bfdbfe", "#ddd6fe", "#fecdd3"]
-    y_min, y_max = np.nanmin(ch1), np.nanmax(ch1)
+    y_all = np.concatenate([ch1, ch2], axis=0)
+    y_min, y_max = np.nanmin(y_all), np.nanmax(y_all)
     span = max(1e-6, y_max - y_min)
 
     for idx, row in seg_df.iterrows():
@@ -226,13 +223,12 @@ def plot_prediction_signal(zip_path, segments_csv, out_png, title: str = "") -> 
         conf = float(row.get("confidence", 0.0))
         color = colors[idx % len(colors)]
 
-        for ax in axes:
-            ax.axvspan(start_s, end_s, color=color, alpha=0.18)
-            ax.axvline(start_s, color="#4a5568", alpha=0.25, linewidth=0.8)
+        ax.axvspan(start_s, end_s, color=color, alpha=0.18)
+        ax.axvline(start_s, color="#4a5568", alpha=0.25, linewidth=0.8)
 
         x_mid = 0.5 * (start_s + end_s)
         y_text = y_max - (idx % 3) * (0.12 * span)
-        ax1.text(
+        ax.text(
             x_mid,
             y_text,
             f"{pred} ({conf:.2f})",
@@ -243,7 +239,7 @@ def plot_prediction_signal(zip_path, segments_csv, out_png, title: str = "") -> 
             bbox=dict(facecolor="white", alpha=0.65, edgecolor="none", pad=1.2),
         )
 
-    fig.suptitle(title if title else f"{zip_path.name} Prediction Segments", fontsize=12)
+    fig.suptitle(title if title else f"{zip_path.name} Prediction Segments (Ch1+Ch2 Overlay)", fontsize=12)
     _save_fig(fig, out_png)
     return out_png
 

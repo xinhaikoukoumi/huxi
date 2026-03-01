@@ -1,0 +1,18 @@
+{
+  "best_run_path": "d:\\huxi\\morse_train\\digit_task_20260301_new69_cuda\\best_run.json",
+  "prediction_dir": "d:\\huxi\\morse_train\\digit_task_20260301_new69_cuda\\prediction_final",
+  "predicted_files": 1,
+  "prediction_rows": [
+    {
+      "zip_file": "AB，0-9，一整组-0206135836(2).zip",
+      "segments": 10,
+      "offset_sec": 0.0,
+      "raw_sequence": "0123456789",
+      "final_sequence": "0123456789",
+      "decoded_phrase": "",
+      "decode_score": -0.0047631451588218765,
+      "mean_confidence": 0.9952481806278228,
+      "output_csv": "d:\\huxi\\morse_train\\digit_task_20260301_new69_cuda\\prediction_final\\AB，0-9，一整组-0206135836(2)_segments.csv"
+    }
+  ]
+}

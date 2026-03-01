@@ -1,0 +1,23 @@
+{
+  "selection_metric": [
+    "exact_match_rate",
+    "mean_char_accuracy",
+    "mean_confidence"
+  ],
+  "best_model": {
+    "model_tag": "random_segments__ch1",
+    "split_mode": "random_segments",
+    "channel_mode": "ch1",
+    "n_sequences": 11,
+    "exact_match_rate": 0.36363636363636365,
+    "mean_char_accuracy": 0.9181818181818181,
+    "mean_confidence": 0.9827161848545075,
+    "artifacts_dir": "d:\\huxi\\morse_train\\digit_task_20260301_new69_cuda\\stage2\\random_segments__ch1",
+    "prediction_dir": "d:\\huxi\\morse_train\\digit_task_20260301_new69_cuda\\predictions_stage2_compare\\random_segments__ch1",
+    "stage2_test_accuracy": 0.9897959183673468,
+    "stage2_test_macro_f1": 0.9885714285714288,
+    "stage2_best_val_macro_f1": 0.9479669805374475
+  },
+  "per_model_csv": "d:\\huxi\\morse_train\\digit_task_20260301_new69_cuda\\sequence_eval_per_model.csv",
+  "per_file_csv": "d:\\huxi\\morse_train\\digit_task_20260301_new69_cuda\\sequence_eval_per_file.csv"
+}

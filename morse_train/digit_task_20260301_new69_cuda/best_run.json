@@ -1,0 +1,31 @@
+{
+  "source_stage": "stage2",
+  "best_run": {
+    "stage": "stage2",
+    "split_mode": "random_segments",
+    "channel_mode": "ch1",
+    "best_epoch": 97,
+    "best_val_macro_f1": 0.9479669805374475,
+    "test_accuracy": 0.9897959183673469,
+    "test_macro_f1": 0.9885714285714287,
+    "artifacts_dir": "d:\\huxi\\morse_train\\digit_task_20260301_new69_cuda\\stage2\\random_segments__ch1",
+    "learning_rate": 0.0006,
+    "weight_decay": 0.0001,
+    "loss_type": "ce",
+    "focal_gamma": 2.0,
+    "label_smoothing": 0.0,
+    "mixup_alpha": 0.0,
+    "mixup_prob": 0.0,
+    "aug_shift_max": 14,
+    "aug_noise_std": 0.02,
+    "aug_scale_min": 0.85,
+    "aug_scale_max": 1.15,
+    "aug_drift_max": 0.08,
+    "aug_time_mask_prob": 0.35,
+    "aug_time_mask_max_width": 24
+  },
+  "model_path": "d:\\huxi\\morse_train\\digit_task_20260301_new69_cuda\\stage2\\random_segments__ch1\\morse_char_model.pt",
+  "label_map_path": "d:\\huxi\\morse_train\\digit_task_20260301_new69_cuda\\stage2\\random_segments__ch1\\label_map.json",
+  "target_file": "d:\\huxi\\数字编码\\AB，0-9，一整组-0206135836(2).zip",
+  "output_root": "d:\\huxi\\morse_train\\digit_task_20260301_new69_cuda"
+}

@@ -1,0 +1,2 @@
+This run uses file-group split (train/val/test), reducing same-file leakage.
+Metrics are more conservative and closer to real generalization.

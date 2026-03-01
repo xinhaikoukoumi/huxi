@@ -1,0 +1,2 @@
+This run uses random segment-level split (train/val/test).
+Potential same-file leakage can inflate metrics compared to file-level split.
