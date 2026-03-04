@@ -1,7 +1,0 @@
-﻿model,label_col,status,reason,cv_mode,split_strategy,n_folds,accuracy,macro_f1,macro_recall,recall_cough,recall_exercise,recall_nasal_block,recall_normal,target_label,recall_class_0,recall_class_1,recall_class_2,recall_class_3,recall_class_4,recall_class_5,recall_class_6
-logreg,coarse_label,ok,,group_by_day,stratified_holdout,1,0.3333333333333333,0.25,0.25,0.0,0.0,0.0,1.0,coarse_label,,,,,,,
-svm_rbf,coarse_label,ok,,group_by_day,stratified_holdout,1,0.0,0.0,0.0,0.0,0.0,0.0,0.0,coarse_label,,,,,,,
-random_forest,coarse_label,ok,,group_by_day,stratified_holdout,1,0.0,0.0,0.0,0.0,0.0,0.0,0.0,coarse_label,,,,,,,
-logreg,label,ok,,group_by_day,stratified_holdout,1,0.0,0.0,0.0,,,,,label,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-svm_rbf,label,ok,,group_by_day,stratified_holdout,1,0.0,0.0,0.0,,,,,label,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-random_forest,label,ok,,group_by_day,stratified_holdout,1,0.0,0.0,0.0,,,,,label,0.0,0.0,0.0,0.0,0.0,0.0,0.0

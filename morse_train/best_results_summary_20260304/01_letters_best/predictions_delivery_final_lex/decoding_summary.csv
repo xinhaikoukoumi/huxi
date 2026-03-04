@@ -1,0 +1,8 @@
+zip_file,segments,offset_sec,raw_sequence,final_sequence,decoded_phrase,decode_score,mean_confidence,output_csv
+AB，EAT，1组-0206191606(2).zip,3,0.0,EAT,EAT,EAT,-0.07564342891176541,0.9272234042485555,predictions_delivery_final_lex\AB，EAT，1组-0206191606(2)_segments.csv
+AB，help me，1组-0205183330(2).zip,6,1.0,AEUDME,HELPME,HELP ME,-1.9031227454543114,0.3353319053227703,predictions_delivery_final_lex\AB，help me，1组-0205183330(2)_segments.csv
+AB，Help me，1组-0206134245(2).zip,6,0.0,HEDPME,HELPME,HELP ME,-0.6531034956375757,0.601733478407065,predictions_delivery_final_lex\AB，Help me，1组-0206134245(2)_segments.csv
+AB，help me，每个字母隔5s，1组-0206134739(2).zip,6,0.0,SELPME,HELPME,HELP ME,-0.631285760551691,0.6620755791664124,predictions_delivery_final_lex\AB，help me，每个字母隔5s，1组-0206134739(2)_segments.csv
+AB，help me，连续一组-0205183000(2).zip,6,1.0,IEURME,HELPME,HELP ME,-2.353790349016587,0.3758617710166921,predictions_delivery_final_lex\AB，help me，连续一组-0205183000(2)_segments.csv
+AB，HELP，1组-0206191411(2).zip,4,0.0,SELP,HELP,HELP,-1.0672749932855368,0.5792415477335453,predictions_delivery_final_lex\AB，HELP，1组-0206191411(2)_segments.csv
+AB，MOVE，1组-0206191833(2).zip,4,0.0,MOVE,MOVE,MOVE,-0.28151631355285645,0.7794200032949448,predictions_delivery_final_lex\AB，MOVE，1组-0206191833(2)_segments.csv

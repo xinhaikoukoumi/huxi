@@ -41,22 +41,55 @@ COARSE_LABEL_MAP = {
     "\u8dd1\u6b65": "exercise",
     "\u54b3\u55fd": "cough",
 }
+LABEL_CANONICAL_ALIASES = {
+    "\u53e3\u547c\u5438": "\u53e3\u547c\u5438",
+    "\u9f3b\u5b50\u547c\u5438": "\u9f3b\u5b50\u547c\u5438",
+    "\u9f3b\u547c\u5438": "\u9f3b\u5b50\u547c\u5438",
+    "\u5de6\u9f3b\u585e": "\u5de6\u9f3b\u585e",
+    "\u53f3\u9f3b\u585e": "\u53f3\u9f3b\u585e",
+    "\u5c0f\u8dd1": "\u5c0f\u8dd1",
+    "\u8dd1\u6b65": "\u8dd1\u6b65",
+    "\u54b3\u55fd": "\u54b3\u55fd",
+}
 RESP_BAND = (0.08, 0.7)
 HIGH_BAND = (0.8, 2.0)
 FEATURE_VERSION = "v2_freq_time_hybrid"
 META_COLUMNS = {"zip_file", "label", "coarse_label", "source_format", "group_day", "feature_set", "feature_version"}
 
 
+def normalize_health_label(label: str) -> str:
+    raw = str(label or "").strip()
+    compact = raw.replace(" ", "")
+    for key, canonical in LABEL_CANONICAL_ALIASES.items():
+        if key in compact:
+            return canonical
+    return compact
+
+
 def parse_health_label(filename) -> str:
     name = Path(filename).name
     m = HEALTH_LABEL_PATTERN.search(name)
-    if not m:
+    if m:
+        return normalize_health_label(m.group(1).strip())
+
+    stem = Path(filename).stem.strip()
+    if not stem:
         raise ValueError(f"Failed to parse health label from filename: {name}")
-    return m.group(1).strip()
+    if stem.startswith("AB,") or stem.startswith("AB\uFF0C"):
+        stem = re.sub(r"^AB[,\uFF0C]\s*", "", stem, count=1)
+    elif "," not in stem and "\uFF0C" not in stem:
+        raise ValueError(f"Failed to parse health label from filename: {name}")
+    candidate = re.split(r"[,\uFF0C\-]", stem, maxsplit=1)[0].strip()
+    if not candidate:
+        raise ValueError(f"Failed to parse health label from filename: {name}")
+    norm = normalize_health_label(candidate)
+    if not norm:
+        raise ValueError(f"Failed to parse health label from filename: {name}")
+    return norm
 
 
 def map_coarse_label(label: str) -> str:
-    key = str(label).strip()
+    key = normalize_health_label(label)
     if key not in COARSE_LABEL_MAP:
         raise ValueError(f"Unknown health label for coarse mapping: {label}")
     return COARSE_LABEL_MAP[key]

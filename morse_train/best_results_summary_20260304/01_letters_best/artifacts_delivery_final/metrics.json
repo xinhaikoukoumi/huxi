@@ -1,0 +1,51 @@
+{
+  "best_epoch": 90,
+  "best_val_macro_f1": 0.9798697029466261,
+  "test_loss": 0.58342571838482,
+  "test_accuracy": 0.9527027027027027,
+  "test_macro_f1": 0.9490108182415876,
+  "per_class_recall": {
+    "A": 1.0,
+    "B": 1.0,
+    "C": 1.0,
+    "D": 0.8,
+    "E": 1.0,
+    "F": 1.0,
+    "G": 1.0,
+    "H": 1.0,
+    "I": 1.0,
+    "J": 1.0,
+    "K": 1.0,
+    "L": 1.0,
+    "M": 1.0,
+    "N": 1.0,
+    "O": 1.0,
+    "P": 0.7142857142857143,
+    "Q": 1.0,
+    "R": 1.0,
+    "S": 0.8,
+    "T": 1.0,
+    "U": 0.8,
+    "V": 1.0,
+    "W": 1.0,
+    "X": 1.0,
+    "Y": 1.0,
+    "Z": 0.6
+  },
+  "splits": {
+    "train": 1184,
+    "val": 148,
+    "test": 148
+  },
+  "split_mode": "random_segments",
+  "artifacts": {
+    "model_path": "artifacts_delivery_final\\morse_char_model.pt",
+    "cache_path": "artifacts_delivery_final\\segments_cache.npz",
+    "meta_path": "artifacts_delivery_final\\meta.csv",
+    "label_map_path": "artifacts_delivery_final\\label_map.json",
+    "history_path": "artifacts_delivery_final\\train_history.csv",
+    "metrics_path": "artifacts_delivery_final\\metrics.json",
+    "cm_path": "artifacts_delivery_final\\confusion_matrix.csv",
+    "config_path": "artifacts_delivery_final\\train_config.json"
+  }
+}

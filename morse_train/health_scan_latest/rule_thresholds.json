@@ -1,8 +1,0 @@
-{
-  "cough_duration_max": 59.562499999999986,
-  "cough_dom_freq_min": 0.016384846265284764,
-  "cough_hf_ratio_min": 0.014750775262439425,
-  "cough_kurtosis_min": 1.0848463327178421,
-  "nasal_amp_score_max": 2.7131451227525316,
-  "exercise_activity_score_min": 0.6174115180883109
-}

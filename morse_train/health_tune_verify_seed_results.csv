@@ -1,0 +1,7 @@
+﻿"config","seed","out_dir","coarse_f1","coarse_acc","fine_f1","fine_acc"
+"baseline_strat","42","d:\huxi\morse_train\health_tune_verify_baseline_strat_seed42","0.579166666666667","0.692307692307692","0.306666666666667","0.269230769230769"
+"baseline_strat","52","d:\huxi\morse_train\health_tune_verify_baseline_strat_seed52","0.729166666666667","0.769230769230769","0.524047619047619","0.615384615384615"
+"baseline_strat","62","d:\huxi\morse_train\health_tune_verify_baseline_strat_seed62","0.804861111111111","0.769230769230769","0.525714285714286","0.615384615384615"
+"best_nomix_nobal","42","d:\huxi\morse_train\health_tune_verify_best_nomix_nobal_seed42","0.631385281385281","0.730769230769231","0.626984126984127","0.769230769230769"
+"best_nomix_nobal","52","d:\huxi\morse_train\health_tune_verify_best_nomix_nobal_seed52","0.939033189033189","0.923076923076923","0.460714285714286","0.615384615384615"
+"best_nomix_nobal","62","d:\huxi\morse_train\health_tune_verify_best_nomix_nobal_seed62","0.752815934065934","0.730769230769231","0.375595238095238","0.538461538461538"

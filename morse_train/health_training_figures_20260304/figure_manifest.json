@@ -1,0 +1,22 @@
+{
+  "curves": {
+    "coarse_label": {
+      "loss_png": "d:\\huxi\\morse_train\\health_training_figures_20260304\\coarse_label_loss_curve.png",
+      "acc_png": "d:\\huxi\\morse_train\\health_training_figures_20260304\\coarse_label_accuracy_curve.png"
+    },
+    "label": {
+      "loss_png": "d:\\huxi\\morse_train\\health_training_figures_20260304\\label_loss_curve.png",
+      "acc_png": "d:\\huxi\\morse_train\\health_training_figures_20260304\\label_accuracy_curve.png"
+    }
+  },
+  "confusion": {
+    "coarse_label": {
+      "count_png": "d:\\huxi\\morse_train\\health_training_figures_20260304\\confusion_coarse_label_count.png",
+      "norm_png": "d:\\huxi\\morse_train\\health_training_figures_20260304\\confusion_coarse_label_normalized.png"
+    },
+    "label": {
+      "count_png": "d:\\huxi\\morse_train\\health_training_figures_20260304\\confusion_label_count.png",
+      "norm_png": "d:\\huxi\\morse_train\\health_training_figures_20260304\\confusion_label_normalized.png"
+    }
+  }
+}

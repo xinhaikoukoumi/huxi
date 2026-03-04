@@ -1,0 +1,264 @@
+
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <title>Morse Delivery Report</title>
+  <style>
+    body { font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif; margin: 24px; line-height: 1.45; color: #1f2937; }
+    h1, h2 { margin: 10px 0; }
+    .meta { color: #4b5563; font-size: 13px; }
+    .kpis { display: grid; grid-template-columns: repeat(4, minmax(180px, 1fr)); gap: 12px; margin: 14px 0 20px; }
+    .kpi { border: 1px solid #d1d5db; border-radius: 8px; padding: 10px; background: #f8fafc; }
+    .kpi .v { font-size: 24px; font-weight: 700; color: #0f172a; }
+    .section { margin-top: 24px; }
+    img { max-width: 100%; border: 1px solid #d1d5db; border-radius: 6px; margin: 6px 0; }
+    table { border-collapse: collapse; width: 100%; font-size: 13px; }
+    th, td { border: 1px solid #d1d5db; padding: 6px 8px; text-align: left; }
+    th { background: #f3f4f6; }
+    pre { background: #f8fafc; border: 1px solid #d1d5db; border-radius: 6px; padding: 10px; overflow: auto; }
+    .cards { display: grid; grid-template-columns: repeat(2, minmax(320px, 1fr)); gap: 12px; }
+    .card { border: 1px solid #d1d5db; border-radius: 8px; padding: 10px; background: #fff; }
+  </style>
+</head>
+<body>
+  <h1>Morse Delivery Report</h1>
+  <div class="meta">Generated: 2026-02-21 22:11:17</div>
+  <div class="meta">Artifacts: artifacts_delivery_final | Predictions: predictions_delivery_final_lex</div>
+
+  <div class="kpis">
+    <div class="kpi"><div>Best Epoch</div><div class="v">90</div></div>
+    <div class="kpi"><div>Best Val Macro-F1</div><div class="v">0.9799</div></div>
+    <div class="kpi"><div>Test Accuracy</div><div class="v">0.9527</div></div>
+    <div class="kpi"><div>Test Macro-F1</div><div class="v">0.9490</div></div>
+    <div class="kpi"><div>Command Exact</div><div class="v">1.0000</div></div>
+    <div class="kpi"><div>Command Char Accuracy</div><div class="v">1.0000</div></div>
+    <div class="kpi"><div>Train Segments</div><div class="v">1184</div></div>
+    <div class="kpi"><div>Val/Test Segments</div><div class="v">148/148</div></div>
+  </div>
+
+  <div class="section">
+    <h2>Phenomenon Explanation</h2>
+    <p>训练增强口径(train_aug)长期低于验证口径(val)在当前配置下是可解释的：训练时启用了mixup、label smoothing和随机增强，损失与准确率统计更难；验证集未做这些扰动，指标通常更高。 本次共有 120/120 轮出现 train_aug_acc &lt; val_acc。</p>
+  </div>
+
+  <div class="section">
+    <h2>Training Curves</h2>
+    <div><img src="figures/loss_curve.png" alt="training" /></div><div><img src="figures/accuracy_curve.png" alt="training" /></div><div><img src="figures/val_macro_f1_curve.png" alt="training" /></div>
+  </div>
+
+  <div class="section">
+    <h2>Confusion Matrix</h2>
+    <div><img src="figures/confusion_matrix.png" alt="confusion" /></div><div><img src="figures/confusion_matrix_normalized.png" alt="confusion" /></div>
+  </div>
+
+  <div class="section">
+    <h2>Command-Level Summary</h2>
+    <table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>zip_file</th>
+      <th>gt_phrase</th>
+      <th>decoded_phrase</th>
+      <th>raw_sequence</th>
+      <th>final_sequence</th>
+      <th>segments</th>
+      <th>offset_sec</th>
+      <th>mean_confidence</th>
+      <th>exact_match</th>
+      <th>char_accuracy</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>AB，EAT，1组-0206191606(2).zip</td>
+      <td>EAT</td>
+      <td>EAT</td>
+      <td>EAT</td>
+      <td>EAT</td>
+      <td>3</td>
+      <td>0.0000</td>
+      <td>0.9272</td>
+      <td>1</td>
+      <td>1.0000</td>
+    </tr>
+    <tr>
+      <td>AB，help me，1组-0205183330(2).zip</td>
+      <td>HELP ME</td>
+      <td>HELP ME</td>
+      <td>AEUDME</td>
+      <td>HELPME</td>
+      <td>6</td>
+      <td>1.0000</td>
+      <td>0.3353</td>
+      <td>1</td>
+      <td>1.0000</td>
+    </tr>
+    <tr>
+      <td>AB，Help me，1组-0206134245(2).zip</td>
+      <td>HELP ME</td>
+      <td>HELP ME</td>
+      <td>HEDPME</td>
+      <td>HELPME</td>
+      <td>6</td>
+      <td>0.0000</td>
+      <td>0.6017</td>
+      <td>1</td>
+      <td>1.0000</td>
+    </tr>
+    <tr>
+      <td>AB，help me，每个字母隔5s，1组-0206134739(2).zip</td>
+      <td>HELP ME</td>
+      <td>HELP ME</td>
+      <td>SELPME</td>
+      <td>HELPME</td>
+      <td>6</td>
+      <td>0.0000</td>
+      <td>0.6621</td>
+      <td>1</td>
+      <td>1.0000</td>
+    </tr>
+    <tr>
+      <td>AB，help me，连续一组-0205183000(2).zip</td>
+      <td>HELP ME</td>
+      <td>HELP ME</td>
+      <td>IEURME</td>
+      <td>HELPME</td>
+      <td>6</td>
+      <td>1.0000</td>
+      <td>0.3759</td>
+      <td>1</td>
+      <td>1.0000</td>
+    </tr>
+    <tr>
+      <td>AB，HELP，1组-0206191411(2).zip</td>
+      <td>HELP</td>
+      <td>HELP</td>
+      <td>SELP</td>
+      <td>HELP</td>
+      <td>4</td>
+      <td>0.0000</td>
+      <td>0.5792</td>
+      <td>1</td>
+      <td>1.0000</td>
+    </tr>
+    <tr>
+      <td>AB，MOVE，1组-0206191833(2).zip</td>
+      <td>MOVE</td>
+      <td>MOVE</td>
+      <td>MOVE</td>
+      <td>MOVE</td>
+      <td>4</td>
+      <td>0.0000</td>
+      <td>0.7794</td>
+      <td>1</td>
+      <td>1.0000</td>
+    </tr>
+  </tbody>
+</table>
+  </div>
+
+  <div class="section">
+    <h2>Prediction Visualization</h2>
+    <div class="cards">
+      
+            <div class="card">
+              <div><b>AB，EAT，1组-0206191606(2).zip</b></div>
+              <div>GT: EAT | Pred: EAT</div>
+              <div>Seq: EAT | mean_conf=0.927</div>
+              <div><a href="../predictions_delivery_final_lex/AB，EAT，1组-0206191606(2)_segments.csv">segments.csv</a></div>
+              <img src="../predictions_delivery_final_lex/figures/AB，EAT，1组-0206191606(2)_prediction.png" alt="AB，EAT，1组-0206191606(2)" />
+            </div>
+            
+            <div class="card">
+              <div><b>AB，help me，1组-0205183330(2).zip</b></div>
+              <div>GT: HELP ME | Pred: HELP ME</div>
+              <div>Seq: HELPME | mean_conf=0.335</div>
+              <div><a href="../predictions_delivery_final_lex/AB，help me，1组-0205183330(2)_segments.csv">segments.csv</a></div>
+              <img src="../predictions_delivery_final_lex/figures/AB，help me，1组-0205183330(2)_prediction.png" alt="AB，help me，1组-0205183330(2)" />
+            </div>
+            
+            <div class="card">
+              <div><b>AB，Help me，1组-0206134245(2).zip</b></div>
+              <div>GT: HELP ME | Pred: HELP ME</div>
+              <div>Seq: HELPME | mean_conf=0.602</div>
+              <div><a href="../predictions_delivery_final_lex/AB，Help me，1组-0206134245(2)_segments.csv">segments.csv</a></div>
+              <img src="../predictions_delivery_final_lex/figures/AB，Help me，1组-0206134245(2)_prediction.png" alt="AB，Help me，1组-0206134245(2)" />
+            </div>
+            
+            <div class="card">
+              <div><b>AB，help me，每个字母隔5s，1组-0206134739(2).zip</b></div>
+              <div>GT: HELP ME | Pred: HELP ME</div>
+              <div>Seq: HELPME | mean_conf=0.662</div>
+              <div><a href="../predictions_delivery_final_lex/AB，help me，每个字母隔5s，1组-0206134739(2)_segments.csv">segments.csv</a></div>
+              <img src="../predictions_delivery_final_lex/figures/AB，help me，每个字母隔5s，1组-0206134739(2)_prediction.png" alt="AB，help me，每个字母隔5s，1组-0206134739(2)" />
+            </div>
+            
+            <div class="card">
+              <div><b>AB，help me，连续一组-0205183000(2).zip</b></div>
+              <div>GT: HELP ME | Pred: HELP ME</div>
+              <div>Seq: HELPME | mean_conf=0.376</div>
+              <div><a href="../predictions_delivery_final_lex/AB，help me，连续一组-0205183000(2)_segments.csv">segments.csv</a></div>
+              <img src="../predictions_delivery_final_lex/figures/AB，help me，连续一组-0205183000(2)_prediction.png" alt="AB，help me，连续一组-0205183000(2)" />
+            </div>
+            
+            <div class="card">
+              <div><b>AB，HELP，1组-0206191411(2).zip</b></div>
+              <div>GT: HELP | Pred: HELP</div>
+              <div>Seq: HELP | mean_conf=0.579</div>
+              <div><a href="../predictions_delivery_final_lex/AB，HELP，1组-0206191411(2)_segments.csv">segments.csv</a></div>
+              <img src="../predictions_delivery_final_lex/figures/AB，HELP，1组-0206191411(2)_prediction.png" alt="AB，HELP，1组-0206191411(2)" />
+            </div>
+            
+            <div class="card">
+              <div><b>AB，MOVE，1组-0206191833(2).zip</b></div>
+              <div>GT: MOVE | Pred: MOVE</div>
+              <div>Seq: MOVE | mean_conf=0.779</div>
+              <div><a href="../predictions_delivery_final_lex/AB，MOVE，1组-0206191833(2)_segments.csv">segments.csv</a></div>
+              <img src="../predictions_delivery_final_lex/figures/AB，MOVE，1组-0206191833(2)_prediction.png" alt="AB，MOVE，1组-0206191833(2)" />
+            </div>
+            
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Worst Per-Class Recall</h2>
+    <pre>label   recall
+    Z 0.600000
+    P 0.714286
+    D 0.800000
+    S 0.800000
+    U 0.800000
+    A 1.000000
+    B 1.000000
+    C 1.000000</pre>
+  </div>
+
+  <div class="section">
+    <h2>Train Config Snapshot</h2>
+    <pre>window_sec                             30.0
+target_points                           300
+min_valid_ratio                         0.6
+batch_size                               64
+max_epochs                              120
+early_stopping_patience                 999
+learning_rate                        0.0006
+weight_decay                        0.00015
+label_smoothing                        0.05
+mixup_alpha                             0.4
+mixup_prob                              0.6
+model_variant              enhanced_reslstm
+train_ratio                             0.8
+val_ratio                               0.1
+test_ratio                              0.1
+split_mode                  random_segments
+clip_low_pct                            0.5
+clip_high_pct                          99.5
+median_window                             5
+smooth_window                             9
+detrend                                True
+seed                                     42
+num_workers                               0</pre>
+  </div>
+</body>
+</html>

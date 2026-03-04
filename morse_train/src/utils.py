@@ -4,7 +4,10 @@ from datetime import datetime
 from pathlib import Path
 
 import numpy as np
-import torch
+try:
+    import torch
+except Exception:
+    torch = None
 
 
 def log(message: str) -> None:
@@ -33,6 +36,8 @@ def load_json(path):
 def set_seed(seed: int) -> None:
     random.seed(seed)
     np.random.seed(seed)
+    if torch is None:
+        return
     torch.manual_seed(seed)
     torch.cuda.manual_seed_all(seed)
 
@@ -41,5 +46,6 @@ def set_seed(seed: int) -> None:
 
 
 def get_device():
+    if torch is None:
+        raise RuntimeError("torch is required for get_device(), but it is not installed.")
     return torch.device("cuda" if torch.cuda.is_available() else "cpu")
-

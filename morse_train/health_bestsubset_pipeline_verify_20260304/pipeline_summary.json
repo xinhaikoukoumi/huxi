@@ -1,0 +1,86 @@
+{
+  "task": "health_bestsubset_pipeline",
+  "mode": "ensemble_only",
+  "created_at": "2026-03-04T21:24:58.449834",
+  "input_dir": "d:\\huxi\\health_data_0302_0303_20260304_205759",
+  "output_dir": "d:\\huxi\\morse_train\\health_bestsubset_pipeline_verify_20260304",
+  "runs_root": "d:\\huxi\\morse_train",
+  "seeds_train": [
+    42,
+    52,
+    62,
+    72,
+    82
+  ],
+  "ensemble_seeds": [
+    52,
+    62
+  ],
+  "single_seed_run_summary_csv": "d:\\huxi\\morse_train\\health_bestsubset_pipeline_verify_20260304\\single_seed_run_summary.csv",
+  "train_params": {
+    "target": "both",
+    "cv_mode": "stratified",
+    "model_variant": "enhanced_reslstm",
+    "max_epochs": 60,
+    "patience": 12,
+    "batch_size": 32,
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "label_smoothing": 0.0,
+    "mixup_alpha": 0.0,
+    "mixup_prob": 0.0,
+    "tta_shifts": "0,-4,4",
+    "merge_fine_labels": true,
+    "use_balanced_sampler": false
+  },
+  "targets": {
+    "coarse_label": {
+      "target_col": "coarse_label",
+      "ensemble_seeds": [
+        52,
+        62
+      ],
+      "ensemble_metrics": {
+        "accuracy": 0.8461538461538461,
+        "macro_f1": 0.8770833333333333,
+        "macro_recall": 0.8695436507936508,
+        "n_files": 26,
+        "n_classes": 4
+      },
+      "single_seed_metrics_csv": "d:\\huxi\\morse_train\\health_bestsubset_pipeline_verify_20260304\\single_seed_coarse_label_metrics.csv",
+      "ensemble_file_oof_csv": "d:\\huxi\\morse_train\\health_bestsubset_pipeline_verify_20260304\\ensemble_coarse_label_file_oof.csv",
+      "single_seed_mean_macro_f1": 0.7963102175602176,
+      "single_seed_std_macro_f1": 0.09014429506275194,
+      "single_seed_mean_accuracy": 0.7923076923076923,
+      "single_seed_std_accuracy": 0.09910845174403943,
+      "delta_macro_f1_vs_single_mean": 0.08077311577311574,
+      "delta_accuracy_vs_single_mean": 0.05384615384615388,
+      "single_seed_best_macro_f1": 0.9409722222222222,
+      "single_seed_best_accuracy": 0.9230769230769231
+    },
+    "label": {
+      "target_col": "label",
+      "ensemble_seeds": [
+        52,
+        62
+      ],
+      "ensemble_metrics": {
+        "accuracy": 0.9230769230769231,
+        "macro_f1": 0.8712918660287082,
+        "macro_recall": 0.8666666666666666,
+        "n_files": 26,
+        "n_classes": 5
+      },
+      "single_seed_metrics_csv": "d:\\huxi\\morse_train\\health_bestsubset_pipeline_verify_20260304\\single_seed_label_metrics.csv",
+      "ensemble_file_oof_csv": "d:\\huxi\\morse_train\\health_bestsubset_pipeline_verify_20260304\\ensemble_label_file_oof.csv",
+      "single_seed_mean_macro_f1": 0.6581625639582296,
+      "single_seed_std_macro_f1": 0.11497604113001827,
+      "single_seed_mean_accuracy": 0.7153846153846153,
+      "single_seed_std_accuracy": 0.11040538534159479,
+      "delta_macro_f1_vs_single_mean": 0.21312930207047864,
+      "delta_accuracy_vs_single_mean": 0.20769230769230784,
+      "single_seed_best_macro_f1": 0.8400000000000001,
+      "single_seed_best_accuracy": 0.8846153846153846
+    }
+  }
+}

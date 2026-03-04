@@ -1,0 +1,76 @@
+{
+  "task": "health_signal_deep_learning_cv",
+  "input_dir": "d:\\huxi\\health_data_0302_0303_20260304_205759",
+  "output_dir": "d:\\huxi\\morse_train\\health_visual_seed52_20260304_v2",
+  "device": "cuda:0",
+  "gpu_name": "NVIDIA GeForce RTX 4080 SUPER",
+  "n_files": 26,
+  "n_segments": 330,
+  "skipped_files": 0,
+  "window_sec": 60.0,
+  "target_points": 300,
+  "target": "both",
+  "model_variant": "enhanced_reslstm",
+  "cv_mode": "stratified",
+  "max_epochs": 60,
+  "patience": 12,
+  "batch_size": 32,
+  "learning_rate": 0.001,
+  "weight_decay": 0.0001,
+  "label_smoothing": 0.0,
+  "mixup_alpha": 0.0,
+  "mixup_prob": 0.0,
+  "tta_shifts": [
+    -4,
+    0,
+    4
+  ],
+  "merge_fine_labels": true,
+  "use_balanced_sampler": false,
+  "seed": 52,
+  "targets": {
+    "coarse_label": {
+      "target_col": "coarse_label",
+      "class_names": [
+        "cough",
+        "exercise",
+        "nasal_block",
+        "normal"
+      ],
+      "n_folds": 2,
+      "file_accuracy_mean": 0.7692307692307692,
+      "file_accuracy_std": 0.07692307692307693,
+      "file_macro_f1_mean": 0.7767857142857143,
+      "file_macro_f1_std": 0.0982142857142857,
+      "segment_accuracy_mean": 0.75,
+      "segment_macro_f1_mean": 0.7765595548319605,
+      "fold_csv": "d:\\huxi\\morse_train\\health_visual_seed52_20260304_v2\\deep_cv_coarse_label_folds.csv",
+      "epoch_csv": "d:\\huxi\\morse_train\\health_visual_seed52_20260304_v2\\deep_cv_coarse_label_epochs.csv",
+      "file_oof_csv": "d:\\huxi\\morse_train\\health_visual_seed52_20260304_v2\\deep_cv_coarse_label_file_oof.csv",
+      "split_strategy": "stratified_kfold"
+    },
+    "label": {
+      "target_col": "label",
+      "class_names": [
+        "口呼吸",
+        "咳嗽",
+        "锻炼",
+        "鼻塞",
+        "鼻子呼吸"
+      ],
+      "n_folds": 2,
+      "file_accuracy_mean": 0.8846153846153846,
+      "file_accuracy_std": 0.03846153846153849,
+      "file_macro_f1_mean": 0.8182900432900433,
+      "file_macro_f1_std": 0.09686147186147193,
+      "segment_accuracy_mean": 0.7193562610229277,
+      "segment_macro_f1_mean": 0.6504657724239898,
+      "fold_csv": "d:\\huxi\\morse_train\\health_visual_seed52_20260304_v2\\deep_cv_label_folds.csv",
+      "epoch_csv": "d:\\huxi\\morse_train\\health_visual_seed52_20260304_v2\\deep_cv_label_epochs.csv",
+      "file_oof_csv": "d:\\huxi\\morse_train\\health_visual_seed52_20260304_v2\\deep_cv_label_file_oof.csv",
+      "split_strategy": "stratified_kfold"
+    }
+  },
+  "baseline_best": {},
+  "compare_to_baseline": {}
+}

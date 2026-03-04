@@ -1,0 +1,3 @@
+﻿target_col,fold_idx,fold_name,best_epoch,n_train_files,n_val_files,n_test_files,n_train_segments,n_val_segments,n_test_segments,val_file_macro_f1_best,test_file_accuracy,test_file_macro_f1,test_file_macro_recall,test_segment_accuracy,test_segment_macro_f1,test_segment_macro_recall
+label,0,stratified:0,6,10,3,13,138,24,168,1.0,0.8461538461538461,0.711111111111111,0.7333333333333333,0.7380952380952381,0.6296347671959965,0.6936518520221645
+label,1,stratified:1,4,10,3,13,133,35,162,1.0,0.38461538461538464,0.25,0.33999999999999997,0.5370370370370371,0.5277970177970177,0.53103668261563
