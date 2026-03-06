@@ -1,4 +1,4 @@
-﻿# Python cache
+# Python cache
 __pycache__/
 *.py[cod]
 *.pyo
@@ -14,7 +14,34 @@ Thumbs.db
 # Freeze trash
 _freeze_trash_*/
 
-# Future experiment outputs (keep final delivery outputs)
+# Large binary files — use Git LFS or external storage instead
+# Model weights
+*.pth
+*.pt
+*.ckpt
+*.pkl
+
+# Data archives (raw data should live outside the repo or in Git LFS)
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.rar
+*.7z
+
+# Images generated during training/prediction
+*.png
+*.jpg
+*.jpeg
+
+# CSV / XLSX data outputs (large result files)
+# Note: small reference CSVs tracked intentionally may be excluded via !path/to/file.csv
+morse_train/**/file_features*.csv
+morse_train/**/*_results*.csv
+morse_train/**/*_metrics*.csv
+morse_train/**/*_summary*.csv
+
+# Experiment and run output directories
 morse_train/artifacts*/
 !morse_train/artifacts_delivery_final/
 !morse_train/artifacts_delivery_final/**
@@ -22,3 +49,16 @@ morse_train/artifacts*/
 morse_train/predictions*/
 !morse_train/predictions_delivery_final_lex/
 !morse_train/predictions_delivery_final_lex/**
+
+morse_train/health_*/
+morse_train/digit_task_*/
+morse_train/experiments/
+morse_train/channel_compare/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Virtual environments
+venv/
+.venv/
+env/
