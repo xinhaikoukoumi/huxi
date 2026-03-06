@@ -1,5 +1,6 @@
 import argparse
 import copy
+import shutil
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
@@ -593,6 +594,7 @@ def _train_cv_for_target(
     tta_shifts: List[int],
     use_balanced_sampler: bool,
     device: torch.device,
+    checkpoint_context: Dict[str, object] = None,
 ) -> Dict[str, object]:
     file_df = bundle.file_df.copy()
     class_names = sorted(file_df[target_col].astype(str).unique().tolist())
@@ -607,6 +609,8 @@ def _train_cv_for_target(
     fold_rows: List[dict] = []
     file_oof_rows: List[pd.DataFrame] = []
     epoch_rows: List[dict] = []
+    checkpoint_context = dict(checkpoint_context or {})
+    fold_ckpt_dir = ensure_dir(out_dir / "deploy_checkpoints" / str(target_col))
 
     for fold_idx, fold in enumerate(cv["splits"]):
         test_file_idx = np.asarray(fold["test_idx"], dtype=np.int64)
@@ -749,8 +753,45 @@ def _train_cv_for_target(
                 if wait >= int(patience):
                     break
 
+        best_ckpt_path = ""
+        best_label_map_path = ""
         if best_state is not None:
             model.load_state_dict(best_state)
+            best_ckpt_path = str(fold_ckpt_dir / f"seed{int(seed)}_{target_col}_fold{int(fold_idx)}_best.pt")
+            best_label_map_path = str(
+                fold_ckpt_dir / f"seed{int(seed)}_{target_col}_fold{int(fold_idx)}_label_map.json"
+            )
+            label_map = {str(name): int(i) for i, name in enumerate(class_names)}
+            checkpoint_payload = {
+                "state_dict": best_state,
+                "num_classes": int(n_classes),
+                "input_channels": int(bundle.X.shape[1]),
+                "target_points": int(bundle.X.shape[2]),
+                "label_map": label_map,
+                "config": {
+                    "task": "health",
+                    "target_col": str(target_col),
+                    "model_variant": str(model_variant),
+                    "cv_mode": str(cv_mode),
+                    "seed": int(seed),
+                    "fold_idx": int(fold_idx),
+                    "window_sec": float(checkpoint_context.get("window_sec", np.nan)),
+                    "min_valid_ratio": float(checkpoint_context.get("min_valid_ratio", np.nan)),
+                    "clip_low_pct": float(checkpoint_context.get("clip_low_pct", np.nan)),
+                    "clip_high_pct": float(checkpoint_context.get("clip_high_pct", np.nan)),
+                    "median_window": int(checkpoint_context.get("median_window", 0)),
+                    "smooth_window": int(checkpoint_context.get("smooth_window", 0)),
+                    "learning_rate": float(learning_rate),
+                    "weight_decay": float(weight_decay),
+                    "label_smoothing": float(label_smoothing),
+                    "mixup_alpha": float(mixup_alpha),
+                    "mixup_prob": float(mixup_prob),
+                    "tta_shifts": [int(x) for x in tta_shifts],
+                    "merge_fine_labels": bool(checkpoint_context.get("merge_fine_labels", True)),
+                },
+            }
+            torch.save(checkpoint_payload, best_ckpt_path)
+            save_json(best_label_map_path, label_map)
 
         test_logits, test_y_seg, test_seg_file = _predict_logits(model, test_loader, device, tta_shifts=tta_shifts)
         test_seg_pred = np.argmax(test_logits, axis=1).astype(np.int64)
@@ -782,6 +823,8 @@ def _train_cv_for_target(
             "fold_idx": int(fold_idx),
             "fold_name": str(fold["fold_name"]),
             "best_epoch": int(best_epoch),
+            "best_checkpoint_path": str(best_ckpt_path),
+            "best_label_map_path": str(best_label_map_path),
             "n_train_files": int(train_file_idx.size),
             "n_val_files": int(val_file_idx.size),
             "n_test_files": int(test_file_idx.size),
@@ -819,7 +862,22 @@ def _train_cv_for_target(
             "fold_csv": str(fold_csv),
             "epoch_csv": str(epoch_csv),
             "file_oof_csv": str(file_oof_csv),
+            "deploy_model_path": "",
+            "deploy_label_map_path": "",
         }
+
+    best_row_idx = int(
+        fold_df.sort_values(by=["val_file_macro_f1_best", "test_file_macro_f1"], ascending=[False, False]).index[0]
+    )
+    best_row = fold_df.loc[best_row_idx]
+    deploy_model_path = out_dir / f"deploy_{target_col}_best_model.pt"
+    deploy_label_map_path = out_dir / f"deploy_{target_col}_label_map.json"
+    src_ckpt = Path(str(best_row.get("best_checkpoint_path", "")))
+    src_label = Path(str(best_row.get("best_label_map_path", "")))
+    if src_ckpt.exists():
+        shutil.copy2(src_ckpt, deploy_model_path)
+    if src_label.exists():
+        shutil.copy2(src_label, deploy_label_map_path)
 
     summary = {
         "target_col": target_col,
@@ -835,6 +893,14 @@ def _train_cv_for_target(
         "epoch_csv": str(epoch_csv),
         "file_oof_csv": str(file_oof_csv),
         "split_strategy": str(cv.get("split_strategy", "unknown")),
+        "deploy_fold_idx": int(best_row.get("fold_idx", -1)),
+        "deploy_model_path": str(deploy_model_path),
+        "deploy_label_map_path": str(deploy_label_map_path),
+        "fold_checkpoint_paths": [
+            str(x)
+            for x in fold_df["best_checkpoint_path"].astype(str).tolist()
+            if str(x).strip()
+        ],
     }
     return summary
 
@@ -942,6 +1008,15 @@ def run_health_deep(
             tta_shifts=list(tta_shifts or [0]),
             use_balanced_sampler=bool(use_balanced_sampler),
             device=device,
+            checkpoint_context={
+                "window_sec": float(window_sec),
+                "min_valid_ratio": float(min_valid_ratio),
+                "clip_low_pct": float(clip_low_pct),
+                "clip_high_pct": float(clip_high_pct),
+                "median_window": int(median_window),
+                "smooth_window": int(smooth_window),
+                "merge_fine_labels": bool(merge_fine_labels),
+            },
         )
 
     baseline = _load_baseline_metrics(Path(baseline_scan_dir)) if baseline_scan_dir else {}
