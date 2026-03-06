@@ -1,0 +1,27 @@
+name: Feature request
+description: 提交功能建议
+title: "[Feature] "
+labels:
+  - enhancement
+body:
+  - type: textarea
+    id: motivation
+    attributes:
+      label: 需求背景
+      description: 为什么需要这个功能
+      placeholder: 当前遇到的问题或效率瓶颈
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: 期望方案
+      description: 你希望新增或改造什么
+      placeholder: 建议的接口、行为、输出格式等
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: 备选方案
+      description: 是否有替代方式，及其不足

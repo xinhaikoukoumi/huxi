@@ -433,15 +433,26 @@ python -m pytest -q
 
 ---
 
-## 10. Git 与版本回退
-当前已完成本地封盘提交：
-- commit: `669b47ccb80747f81f16153295b3a2f1d5d1342d`
-- tag: `freeze-20260221-delivery-v1`
+## 10. Git 与版本管理
+请避免在文档中长期写死不可验证的 commit/tag。建议使用以下方式管理版本：
 
-可用命令：
+1. 查看最近提交：
 ```bash
-git checkout freeze-20260221-delivery-v1
+git log --oneline --decorate -n 10
 ```
+
+2. 为稳定版本打 tag（示例）：
+```bash
+git tag -a v2026.03.06 -m "stable release"
+git push origin v2026.03.06
+```
+
+3. 回退到指定 tag（示例）：
+```bash
+git checkout v2026.03.06
+```
+
+截至 2026-03-06，本仓库 `main` 分支最近一次提交为：`e332d31`（`终版v1`）。
 
 ---
 

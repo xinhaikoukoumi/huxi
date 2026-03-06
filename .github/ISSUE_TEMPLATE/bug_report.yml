@@ -1,0 +1,40 @@
+name: Bug report
+description: 报告一个可复现的问题
+title: "[Bug] "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: 感谢反馈。请尽量提供可复现信息，便于快速定位。
+  - type: textarea
+    id: summary
+    attributes:
+      label: 问题描述
+      description: 发生了什么，预期是什么
+      placeholder: 简要描述问题现象和预期行为
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: 复现步骤
+      description: 按顺序写出复现步骤
+      placeholder: |
+        1. 执行命令 ...
+        2. 输入数据 ...
+        3. 观察到错误 ...
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: 错误日志/截图
+      description: 粘贴关键报错或截图
+      render: shell
+  - type: input
+    id: env
+    attributes:
+      label: 运行环境
+      description: 例如 OS、Python 版本、CUDA 版本
+      placeholder: Windows 11 / Python 3.10 / CUDA 12.1

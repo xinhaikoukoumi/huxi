@@ -1,24 +1,70 @@
-﻿# Python cache
+# Python
 __pycache__/
 *.py[cod]
 *.pyo
 *.pyd
-
-# Pytest/cache
+*.so
 .pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
+.venv/
+venv/
+env/
 
-# OS temp
+# Jupyter
+.ipynb_checkpoints/
+
+# Build/packaging
+build/
+dist/
+*.egg-info/
+pip-wheel-metadata/
+
+# OS/editor
 .DS_Store
 Thumbs.db
+.idea/
+.vscode/
+
+# Local secrets
+.env
+.env.*
+*.pem
+*.key
+*.p12
+
+# Large data/model files (do not add new binary assets into git history)
+*.zip
+*.npz
+*.pt
+*.pth
+*.onnx
+*.tflite
+*.pb
+*.npy
+*.parquet
+*.feather
 
 # Freeze trash
 _freeze_trash_*/
 
-# Future experiment outputs (keep final delivery outputs)
+# Project runtime outputs
 morse_train/artifacts*/
 !morse_train/artifacts_delivery_final/
 !morse_train/artifacts_delivery_final/**
-
 morse_train/predictions*/
 !morse_train/predictions_delivery_final_lex/
 !morse_train/predictions_delivery_final_lex/**
+morse_train/experiments/
+morse_train/model_output/
+morse_train/android_delivery_task_models_*/
+morse_train/health_mobile_seed*/
+morse_train/digit_task_*/android_export_*/
+
+# Local staging folders
+num/
+yundong/
+zimu/
