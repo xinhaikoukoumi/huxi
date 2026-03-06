@@ -245,16 +245,24 @@ def _run_training(
             "run_dir": str(run_dir),
             "n_files": int(summary.get("n_files", 0)),
             "n_segments": int(summary.get("n_segments", 0)),
+            "deploy_coarse_model_path": "",
+            "deploy_coarse_label_map_path": "",
+            "deploy_fine_model_path": "",
+            "deploy_fine_label_map_path": "",
         }
         if "coarse_label" in summary.get("targets", {}) and summary["targets"]["coarse_label"].get("status", "ok") != "failed":
             row["coarse_f1"] = float(summary["targets"]["coarse_label"]["file_macro_f1_mean"])
             row["coarse_acc"] = float(summary["targets"]["coarse_label"]["file_accuracy_mean"])
+            row["deploy_coarse_model_path"] = str(summary["targets"]["coarse_label"].get("deploy_model_path", ""))
+            row["deploy_coarse_label_map_path"] = str(summary["targets"]["coarse_label"].get("deploy_label_map_path", ""))
         else:
             row["coarse_f1"] = np.nan
             row["coarse_acc"] = np.nan
         if "label" in summary.get("targets", {}) and summary["targets"]["label"].get("status", "ok") != "failed":
             row["fine_f1"] = float(summary["targets"]["label"]["file_macro_f1_mean"])
             row["fine_acc"] = float(summary["targets"]["label"]["file_accuracy_mean"])
+            row["deploy_fine_model_path"] = str(summary["targets"]["label"].get("deploy_model_path", ""))
+            row["deploy_fine_label_map_path"] = str(summary["targets"]["label"].get("deploy_label_map_path", ""))
         else:
             row["fine_f1"] = np.nan
             row["fine_acc"] = np.nan
@@ -339,4 +347,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
