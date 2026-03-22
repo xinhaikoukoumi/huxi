@@ -1,51 +1,98 @@
-# huxi 项目运行说明
+# huxi 仓库总览
 
-本目录当前包含 3 类任务代码与数据：
+本仓库当前包含两条协同工作线：
 
-1. 字母识别（A-Z）
-2. 数字识别（0-9）
-3. 健康场景识别（60s 分组）
+1. `morse_train/`
+   - 负责字母、数字、健康呼吸场景三类任务的训练、评估、导出和报告生成。
+2. `android_app/`
+   - 负责 Android 端完整演示客户端，串通“呼吸监测 + 本地账户 + 模型推理 + 数据管理”主流程。
 
-统一代码目录：`d:\huxi\morse_train`
+`morse_train` 是模型与算法主线，`android_app` 是移动端落地主线。
 
-## 1. 环境准备
+## 1. 仓库结构
 
-``powershell +cd d:\huxi\morse_train +pip install -r requirements.txt +``
+```text
+huxi/
+├─ morse_train/                      # Python 训练/评估/导出主工程
+│  ├─ src/
+│  ├─ tests/
+│  ├─ README.md
+│  ├─ PROJECT_TUTORIAL.md
+│  ├─ run_export_android_task_models.py
+│  ├─ run_export_android_digit_models.py
+│  └─ android_integration_sample/    # 轻量 Android 接入示例
+├─ android_app/                      # 完整 Android 演示客户端
+│  ├─ app/
+│  ├─ gradle/
+│  ├─ README.md
+│  └─ gradlew.bat
+├─ .github/
+└─ REPO_HYGIENE.md
+```
 
-## 2. 三类任务如何运行
+## 2. 快速导航
 
-### 2.1 字母识别（A-Z）
+- 想看训练、评估、模型效果和完整命令：看 `morse_train/README.md`
+- 想看更细的教学式说明：看 `morse_train/PROJECT_TUTORIAL.md`
+- 想看 Android 端完整客户端：看 `android_app/README.md`
+- 想看最小 Android 接入范例：看 `morse_train/android_integration_sample/README.md`
 
-训练：
-``powershell +cd d:\huxi\morse_train +python run_train.py --train_dir d:\huxi\摩斯编码\AD+BC --out_dir d:\huxi\morse_train\artifacts_letters_dual --label_mode letters --channel_mode dual --seed 42 --max_epochs 120 --rebuild_cache +``
+## 3. 快速开始
 
-预测：
-``powershell +cd d:\huxi\morse_train +python run_predict.py --model_path d:\huxi\morse_train\artifacts_letters_dual\morse_char_model.pt --label_map d:\huxi\morse_train\artifacts_letters_dual\label_map.json --input_dir d:\huxi\摩斯编码 --output_dir d:\huxi\morse_train\pred_letters_lex --lexicon_file d:\huxi\morse_train\lexicon_commands.txt +``
+### 3.1 Python 训练与测试
 
-### 2.2 数字识别（0-9）
+```powershell
+cd morse_train
+pip install -r requirements.txt
+python -m pytest -q
+```
 
-推荐一键流程（训练+搜索+目标文件预测）：
-``powershell +cd d:\huxi\morse_train +python run_digit_pipeline.py --train_dir d:\huxi\数字编码\AD+BC数字编码 --target_file "d:\huxi\数字编码\AB，0-9，一整组-0206135836(2).zip" +``
+### 3.2 Android 客户端验证
 
-### 2.3 健康场景识别（60s 分组）
+```powershell
+cd android_app
+.\gradlew.bat testDebugUnitTest --no-daemon
+```
 
-推荐深度学习训练（GPU）：
-``powershell +cd d:\huxi\morse_train +python run_health_deep.py --input_dir d:\huxi\health_data_0302_0303_20260304_205759 --output_dir d:\huxi\morse_train\health_run_latest --target both --cv_mode stratified --model_variant enhanced_reslstm --max_epochs 60 --patience 12 --batch_size 32 --learning_rate 0.001 --weight_decay 0.0001 --label_smoothing 0 --mixup_alpha 0 --mixup_prob 0 --tta_shifts 0,-4,4 --merge_fine_labels --no_balanced_sampler --seed 42 +``
+## 4. Android 端模型接入方式
 
-如果要做多 seed 集成（当前更推荐）：
-``powershell +cd d:\huxi\morse_train +python run_health_bestsubset_pipeline.py --mode train_and_ensemble --input_dir d:\huxi\health_data_0302_0303_20260304_205759 --output_dir d:\huxi\morse_train\health_bestsubset_pipeline_latest --seed_train 42,52,62,72,82 --ensemble_seeds 52,62 --target both --cv_mode stratified --model_variant enhanced_reslstm --learning_rate 0.001 --weight_decay 0.0001 --batch_size 32 --label_smoothing 0 --mixup_alpha 0 --mixup_prob 0 --tta_shifts 0,-4,4 --no_use_balanced_sampler +``
+Android 客户端已经并入本仓库，但为了遵守仓库卫生规则，`.ptl` 和 APK 这类新的二进制产物不会直接提交进 Git 历史。
 
-## 3. 当前最终结果
+推荐流程：
 
-`d:\huxi\morse_train\best_results_summary_20260304`
+1. 先在 `morse_train/` 中完成训练或选定现有最佳模型。
+2. 使用以下脚本导出 Android 可用的 TorchScript Lite 模型：
+   - `run_export_android_task_models.py`
+   - `run_export_android_digit_models.py`
+3. 将导出的 `.ptl` 文件保存在本地工作目录中：
+   - 可复制到 `android_app/app/src/main/assets/models/` 后本地运行
+   - 或直接在 App 界面里填写本机绝对路径加载
 
-其中按类别分类如下：
+说明：
 
-- `d:\huxi\morse_train\best_results_summary_20260304\01_letters_best`
-  +- `d:\huxi\morse_train\best_results_summary_20260304\02_digits_best`
-  +- `d:\huxi\morse_train\best_results_summary_20260304\03_health_best`
+- `morse_train/android_integration_sample/` 提供的是最小接入示例。
+- `android_app/` 提供的是完整可运行客户端。
+- 本仓库默认忽略 `.ptl`、APK 和 Android 构建缓存，避免继续污染 Git 历史。
 
-总说明文件：
+## 5. 当前仓库定位
 
-- `d:\huxi\morse_train\best_results_summary_20260304\BEST_RESULTS_SUMMARY.md`
-   `d:\huxi\morse_train\best_results_summary_20260304\COPY_MANIFEST.csv`
+截至 2026-03-22，本仓库已经具备：
+
+- 字母、数字、健康三类任务的训练与验证链路
+- Android 端侧模型加载与推理落地代码
+- Android 演示客户端源码
+- Python 测试、PR 模板和基础 CI 工作流
+
+## 6. 仓库协作约束
+
+提交前请优先检查以下事项：
+
+- 不要新增 `.zip`、`.pt`、`.pth`、`.ptl`、`.apk` 等大体积二进制到 Git 历史
+- 优先走分支 + PR 流程，遵守 `.github/pull_request_template.md`
+- 修改 Python 侧后至少运行 `python -m pytest -q`
+- 修改 Android 侧后至少运行 `.\gradlew.bat testDebugUnitTest --no-daemon`
+- 如需清理历史大文件，先阅读 `REPO_HYGIENE.md`
+
+## 7. 一句话说明
+
+`huxi` 现在既包含呼吸信号识别模型研发主线，也包含 Android 端演示客户端，是一个“训练导出 + 移动端接入”闭环仓库。

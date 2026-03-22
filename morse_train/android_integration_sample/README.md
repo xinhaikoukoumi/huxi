@@ -1,5 +1,7 @@
 # Android Integration (PyTorch Lite)
 
+Need a full runnable Android client instead of a minimal sample? See `../../android_app/README.md`.
+
 This sample integrates 4 task-level models:
 
 - `letters`

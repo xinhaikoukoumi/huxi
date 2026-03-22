@@ -68,3 +68,15 @@ morse_train/digit_task_*/android_export_*/
 num/
 yundong/
 zimu/
+
+# Android demo app
+android_app/.gradle/
+android_app/.kotlin/
+android_app/.idea/
+android_app/local.properties
+android_app/build/
+android_app/captures/
+android_app/app/build/
+android_app/app/release/
+android_app/**/*.apk
+android_app/**/*.ptl
